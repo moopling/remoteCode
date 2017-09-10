@@ -1,19 +1,16 @@
-#/usr/bin/env python
+# this does nothing
+from time import sleep
 
-import os
-import sys
-import atexit
-from test import runforever
 
-pid = str(os.getpid())
-pidfile = "/tmp/remote-python-code.pid"
+def runforever():
+    while True:
+        print("test")
+        sleep(1)
 
-if os.path.isfile(pidfile):
-    print("{0} already exists, exiting".format(pidfile))
-    sys.exit()
 
-with open(pidfile, 'w') as f:
-    atexit.register(lambda: os.unlink(pidfile))
-    f.write(pid)
+def main():
+    runforever()
 
-runforever()
+
+if __name__ == '__main__':
+    main()
